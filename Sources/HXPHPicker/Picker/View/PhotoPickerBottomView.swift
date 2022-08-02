@@ -24,7 +24,7 @@ extension PhotoPickerBottomViewDelegate {
     func bottomView(_ bottomView: PhotoPickerBottomView, didSelectedItemAt photoAsset: PhotoAsset) {}
 }
 
-class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
+public class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
     enum SourceType {
         case picker
         case preview
@@ -308,7 +308,7 @@ class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
         return originalLoadingView
     }()
     
-    lazy var finishBtn: UIButton = {
+    public lazy var finishBtn: UIButton = {
         let finishBtn = UIButton.init(type: .custom)
         finishBtn.setTitle("完成".localized, for: .normal)
         finishBtn.titleLabel?.font = UIFont.mediumPingFang(ofSize: 16)
@@ -318,7 +318,7 @@ class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
         finishBtn.addTarget(self, action: #selector(didFinishButtonClick(button:)), for: .touchUpInside)
         return finishBtn
     }()
-    @objc func didFinishButtonClick(button: UIButton) {
+    @objc public func didFinishButtonClick(button: UIButton) {
         hx_delegate?.bottomView(didFinishButtonClick: self)
     }
     func updatePromptView() {
@@ -540,7 +540,7 @@ class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
         originalLoadingView.x = originalTitleLb.frame.maxX + 3
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         if sourceType != .browser {
             contentView.width = width
@@ -596,7 +596,7 @@ class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
         }
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {

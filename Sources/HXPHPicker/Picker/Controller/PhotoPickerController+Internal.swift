@@ -443,7 +443,7 @@ extension PhotoPickerController {
         return true
     }
     
-    private func canSelectPhoto(_ photoAsset: PhotoAsset) -> (Bool, String?) {
+    public func canSelectPhoto(_ photoAsset: PhotoAsset) -> (Bool, String?) {
         var canSelect = true
         var text: String?
         if photoAsset.mediaType == .photo {
@@ -476,7 +476,7 @@ extension PhotoPickerController {
         return (canSelect, text)
     }
     
-    private func canSelectVideo(
+    public func canSelectVideo(
         _ photoAsset: PhotoAsset,
         filterEditor: Bool
     ) -> (Bool, String?) {
@@ -554,7 +554,7 @@ extension PhotoPickerController {
     ///   - photoAsset: 对应的PhotoAsset
     ///   - showHUD: 是否显示HUD
     /// - Returns: 结果
-    func canSelectAsset(
+    public dynamic func canSelectAsset(
         for photoAsset: PhotoAsset,
         showHUD: Bool,
         filterEditor: Bool = false

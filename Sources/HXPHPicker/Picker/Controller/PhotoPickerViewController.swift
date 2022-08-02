@@ -134,7 +134,7 @@ public class PhotoPickerViewController: BaseViewController {
         return albumView
     }()
     
-    lazy var bottomView: PhotoPickerBottomView = {
+    public lazy var bottomView: PhotoPickerBottomView = {
         let bottomView = PhotoPickerBottomView(
             config: config.bottomView,
             allowLoadPhotoLibrary: allowLoadPhotoLibrary
