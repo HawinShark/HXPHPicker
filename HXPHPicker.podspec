@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
     spec.author                 = { "SilenceLove" => "294005139@qq.com" }
     spec.swift_versions         = ['5.0']
     spec.ios.deployment_target  = "12.0"
-    spec.source                 = { :git => "https://github.com/SilenceLove/HXPHPicker.git", :tag => "#{spec.version}" }
+    spec.source                 = { :git => "https://github.com/HawinShark/HXPHPicker.git", :tag => "#{spec.version}" }
     spec.framework              = 'UIKit','Photos','PhotosUI'
     spec.requires_arc           = true
     
