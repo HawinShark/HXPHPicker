@@ -13,25 +13,35 @@ open class PhotoPreviewSelectedViewCell: UICollectionViewCell {
     
     public lazy var photoView: PhotoThumbnailView = {
         let photoView = PhotoThumbnailView()
+        photoView.layer.cornerRadius = 3.0
+        photoView.layer.masksToBounds = true
         return photoView
     }()
     
     public lazy var selectedView: UIView = {
         let selectedView = UIView.init()
         selectedView.isHidden = true
-        selectedView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        selectedView.addSubview(tickView)
+        selectedView.layer.cornerRadius = 3.0
         return selectedView
     }()
     
-    public lazy var tickView: AlbumTickView = {
-        let tickView = AlbumTickView.init(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        return tickView
-    }()
+//    public lazy var selectedView: UIView = {
+//        let selectedView = UIView.init()
+//        selectedView.isHidden = true
+//        selectedView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//        selectedView.addSubview(tickView)
+//        return selectedView
+//    }()
+//
+//    public lazy var tickView: AlbumTickView = {
+//        let tickView = AlbumTickView.init(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        return tickView
+//    }()
     
     open var tickColor: UIColor? {
         didSet {
-            tickView.tickLayer.strokeColor = tickColor?.cgColor
+            selectedView.backgroundColor = tickColor
+//            tickView.tickLayer.strokeColor = tickColor?.cgColor
             #if canImport(Kingfisher)
             photoView.kf_indicatorColor = tickColor
             #endif
@@ -60,8 +70,8 @@ open class PhotoPreviewSelectedViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(photoView)
         contentView.addSubview(selectedView)
+        contentView.addSubview(photoView)
     }
     
     public func cancelRequest() {
@@ -69,9 +79,12 @@ open class PhotoPreviewSelectedViewCell: UICollectionViewCell {
     }
     open override func layoutSubviews() {
         super.layoutSubviews()
-        photoView.frame = bounds
+        var rect = bounds
+        rect.size = .init(width: rect.size.width * 0.9, height: rect.size.height * 0.9)
+        photoView.frame = rect
+        photoView.center = self.contentView.center
         selectedView.frame = bounds
-        tickView.center = CGPoint(x: width * 0.5, y: height * 0.5)
+//        tickView.center = CGPoint(x: width * 0.5, y: height * 0.5)
     }
     
     required public init?(coder: NSCoder) {

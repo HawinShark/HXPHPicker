@@ -36,7 +36,7 @@ extension PhotoTools {
         view.layer.add(group, forKey: "focusViewAnimation")
     }
     
-    static func jpegData(
+    static public func jpegData(
         withPixelBuffer pixelBuffer: CVPixelBuffer,
         attachments: CFDictionary?
     ) -> Data? {

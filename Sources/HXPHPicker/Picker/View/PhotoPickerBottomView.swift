@@ -24,7 +24,7 @@ extension PhotoPickerBottomViewDelegate {
     func bottomView(_ bottomView: PhotoPickerBottomView, didSelectedItemAt photoAsset: PhotoAsset) {}
 }
 
-public class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate {
+public class PhotoPickerBottomView: UIView, PhotoPreviewSelectedViewDelegate {
     enum SourceType {
         case picker
         case preview
@@ -70,7 +70,7 @@ public class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate 
             }
         }
         configColor()
-        isTranslucent = config.isTranslucent
+//        isTranslucent = config.isTranslucent
     }
     
     convenience init(
@@ -335,8 +335,8 @@ public class PhotoPickerBottomView: UIToolbar, PhotoPreviewSelectedViewDelegate 
     func configColor() {
         let isDark = PhotoManager.isDark
         backgroundColor = isDark ? config.backgroundDarkColor : config.backgroundColor
-        barTintColor = isDark ? config.barTintDarkColor : config.barTintColor
-        barStyle = isDark ? config.barDarkStyle : config.barStyle
+//        barTintColor = isDark ? config.barTintDarkColor : config.barTintColor
+//        barStyle = isDark ? config.barDarkStyle : config.barStyle
         if sourceType != .browser {
             configCoreColor()
         }else {
