@@ -261,6 +261,7 @@ class PickerTransition: NSObject, UIViewControllerAnimatedTransitioning {
         ) {
             if self.type == .push {
                 self.pushImageView.frame = rect
+                self.pushImageView.center = CGPoint(x: rect.width / 2, y: UIScreen.main.bounds.height / 2)
             }else if self.type == .pop {
                 if rect.isEmpty {
                     fromView?.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)

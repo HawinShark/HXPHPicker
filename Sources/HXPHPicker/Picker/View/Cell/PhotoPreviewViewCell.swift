@@ -92,7 +92,9 @@ open class PhotoPreviewViewCell: UICollectionViewCell, UIScrollViewDelegate {
         scrollContentView.frame = CGRect(x: 0, y: 0, width: contentWidth, height: contentHeight)
         if contentHeight < height {
             scrollView.contentSize = size
-            scrollContentView.center = CGPoint(x: width * 0.5, y: height * 0.5)
+            let screen = UIScreen.main.bounds
+            scrollContentView.center = CGPoint(x: screen.width * 0.5, y: screen.height * 0.5)
+//            scrollContentView.center = CGPoint(x: width * 0.5, y: height * 0.5)
         }else {
             scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         }
@@ -112,7 +114,9 @@ open class PhotoPreviewViewCell: UICollectionViewCell, UIScrollViewDelegate {
             scrollContentView.frame = CGRect(x: 0, y: 0, width: contentWidth, height: contentHeight)
             scrollView.contentSize = size
         }
-        scrollContentView.center = CGPoint(x: width * 0.5, y: height * 0.5)
+        let screen = UIScreen.main.bounds
+        scrollContentView.center = CGPoint(x: screen.width * 0.5, y: screen.height * 0.5)
+//        scrollContentView.center = CGPoint(x: width * 0.5, y: height * 0.5)
     }
     func requestPreviewAsset() {
         scrollContentView.requestPreviewAsset()
