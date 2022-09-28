@@ -416,7 +416,7 @@ public extension PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         didFinishSelection result: PickerResult
     ) {
-        if !pickerController.autoDismiss {
+        if pickerController.autoDismiss {
             pickerController.dismiss(animated: true)
         }
     }
@@ -424,7 +424,7 @@ public extension PhotoPickerControllerDelegate {
     func pickerController(
         didCancel pickerController: PhotoPickerController
     ) {
-        if !pickerController.autoDismiss {
+        if pickerController.autoDismiss {
             pickerController.dismiss(animated: true)
         }
     }
