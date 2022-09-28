@@ -423,15 +423,18 @@ extension PhotoPickerController {
         if !config.adaptiveBarAppearance {
             return
         }
-        if #available(iOS 15.0, *) {
+        if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.titleTextAttributes = titleTextAttributes
-            switch barStyle {
-            case .default:
-                appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
-            default:
-                appearance.backgroundEffect = UIBlurEffect(style: .dark)
-            }
+//            switch barStyle {
+//            case .default:
+//                appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
+//            default:
+//                appearance.backgroundEffect = UIBlurEffect(style: .dark)
+//            }
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            appearance.shadowColor = .clear
             navigationBar.standardAppearance = appearance
             navigationBar.scrollEdgeAppearance = appearance
         }
