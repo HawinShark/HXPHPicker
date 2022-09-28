@@ -463,6 +463,21 @@ extension PhotoPickerController {
             }
         }
     }
+    public func resetSelectedArray() {
+        // pop preview controller
+        if let previewViewController = previewViewController {
+            viewControllers = viewControllers.filter { controller in
+                controller != previewViewController
+            }
+        }
+        // reset selecte state
+        while !selectedAssetArray.isEmpty {
+            removePhotoAsset(photoAsset: selectedAssetArray.first!)
+        }
+        // reload collection
+        pickerViewController?.updateCellSelectedTitle()
+        pickerViewController?.bottomView.updateFinishButtonTitle()
+    }
     private func setupSelectedArray() {
         if isPreviewAsset {
             for photoAsset in selectedAssetArray {
