@@ -272,7 +272,7 @@ open class PhotoPickerController: UINavigationController {
     var isSwipeRightBack: Bool = false
     var allowPushPresent: Bool = false
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         PhotoManager.shared.indicatorType = config.indicatorType
         PhotoManager.shared.loadNetworkVideoMode = config.previewView.loadNetworkVideoMode
